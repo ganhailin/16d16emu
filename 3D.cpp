@@ -266,7 +266,7 @@ int Draw_Trangle_2D(float x0, float y0, float z0,
 
 int Drawline3D(int x1, int y1, float z1, int x2, int y2, float z2, int color)
 {
-    if (!((x1 >= -100 && x1 < xrad+100 && y1 >= -100 && y1 < yrad+100)&&(x2 >= -100 && x2 < xrad+100 && y2 >= -100 && y2 < yrad+100)))return 0;
+    if (!((x1 >= -300 && x1 < xrad+300 && y1 >= -300 && y1 < yrad+300)&&(x2 >= -300 && x2 < xrad+300 && y2 >= -300 && y2 < yrad+300)))return 0;
     int dx = x2 - x1, dy = y2 - y1;
     float dz = z2 - z1;
     float dmax = abs(dx) > abs(dy) ? abs(dx) : abs(dy);

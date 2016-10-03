@@ -47,11 +47,23 @@ public:
     }
     void displayleds(void)
     {
+        drawline3D(setpoint(31,70,31,0xffffff),setpoint(31,-81,31,0xffffff),0xffffff);
+        drawline3D(setpoint(-41,70,31,0xffffff),setpoint(-41,-81,31,0xffffff),0xffffff);
+        drawline3D(setpoint(31,70,-41,0xffffff),setpoint(31,-81,-41,0xffffff),0xffffff);
+        drawline3D(setpoint(-41,70,-41,0xffffff),setpoint(-41,-81,-41,0xffffff),0xffffff);
+        drawline3D(setpoint(-41,-81,-41,0xffffff),setpoint(-41,-81,31,0xffffff),0xffffff);
+        drawline3D(setpoint(-41,-81,-41,0xffffff),setpoint(31,-81,-41,0xffffff),0xffffff);
+        drawline3D(setpoint(31,-81,-41,0xffffff),setpoint(31,-81,31,0xffffff),0xffffff);
+        drawline3D(setpoint(31,-81,31,0xffffff),setpoint(-41,-81,31,0xffffff),0xffffff);
+        drawline3D(setpoint(-41,71,-41,0xffffff),setpoint(-41,71,31,0xffffff),0xffffff);
+        drawline3D(setpoint(-41,71,-41,0xffffff),setpoint(31,71,-41,0xffffff),0xffffff);
+        drawline3D(setpoint(31,71,-41,0xffffff),setpoint(31,71,31,0xffffff),0xffffff);
+        drawline3D(setpoint(31,71,31,0xffffff),setpoint(-41,71,31,0xffffff),0xffffff);
         for (int x=0; x<8; x++)
             for(int y=0; y<8; y++)
                 for(int z=0; z<16; z++)
-                    if(getled(x,y,z,0))
-                        Drawbox2((x-this->x/2)*10,(z-this->z/2)*10, (y-this->y/3)*10, 2, zero, zero,getled(x,y,z) );
+                    //if(getled(x,y,z,0))
+                        Drawbox2((x-this->x/2)*10,(z-this->z/2)*10, (y-this->y/2)*10, 1, zero, zero,getled(x,y,z) );
     }
     uint32_t getled(uint8_t x,uint8_t y,uint8_t z,bool i=1)
     {

@@ -10,9 +10,11 @@ void tetris3d::newgame()
     scores=0;
     this->nowblock.bknew();
     lock=0;
+    lock2=0;
 }
 int tetris3d::gameloop()
 {
+    while(lock2)usleep(10);
     lock=1;
     for(int z=0; z<8; z++)
     {
@@ -52,7 +54,6 @@ int tetris3d::cleanlay(int x)
                 this->led.setled(x*2,y*2+1,z*2+1,color);
                 this->led.setled(x*2+1,y*2+1,z*2,color);
                 this->led.setled(x*2+1,y*2+1,z*2+1,color);
-
             }
     }
     return 0;
@@ -60,6 +61,7 @@ int tetris3d::cleanlay(int x)
 
 int tetris3d::input(int mv,int rot)
 {
+    lock2=1;
     while(lock)usleep(10);
     switch(mv)
     {
@@ -85,7 +87,9 @@ int tetris3d::input(int mv,int rot)
     default:
         break;
     }
+    lock2=0;
     return 0;
+
 }
 
 int block::bkmove(uint8_t x)
@@ -97,7 +101,7 @@ int block::bkmove(uint8_t x)
         this->bkclear();
         for(int i=0; i<this->nowblock.numofbk; i++)
         {
-            point buffpoint=this->rotatepoint(this->nowblock.points[i]);
+            point buffpoint=this->nowblock.points[i];
             buffpoint.x-=1;
             if(this->ckpos(buffpoint))
                 error++;
@@ -117,7 +121,7 @@ int block::bkmove(uint8_t x)
         this->bkclear();
         for(int i=0; i<this->nowblock.numofbk; i++)
         {
-            point buffpoint=this->rotatepoint(this->nowblock.points[i]);
+            point buffpoint=this->nowblock.points[i];
             buffpoint.x+=1;
             if(this->ckpos(buffpoint))
                 error++;
@@ -137,7 +141,7 @@ int block::bkmove(uint8_t x)
         this->bkclear();
         for(int i=0; i<this->nowblock.numofbk; i++)
         {
-            point buffpoint=this->rotatepoint(this->nowblock.points[i]);
+            point buffpoint=this->nowblock.points[i];
             buffpoint.y-=1;
             if(this->ckpos(buffpoint))
                 error++;
@@ -157,7 +161,7 @@ int block::bkmove(uint8_t x)
         this->bkclear();
         for(int i=0; i<this->nowblock.numofbk; i++)
         {
-            point buffpoint=this->rotatepoint(this->nowblock.points[i]);
+            point buffpoint=this->nowblock.points[i];
             buffpoint.y+=1;
             if(this->ckpos(buffpoint))
                 error++;

@@ -118,6 +118,7 @@ public:
     uint8_t (* gamectl)();
 private:
     int lock=0;
+    int lock2=0;
     int cleanlay(int x);
     uint8_t (*blocks)[8][8][16];
     ledemu led;
