@@ -1,0 +1,591 @@
+# depslib dependency file v1.0
+1413519072 source:c:\documents and settings\administrator\桌面\3d_clock\main.cpp
+	<time.h>
+	"SDL.h"
+	<windows.h>
+	<pthread.h>
+	"3D.h"
+
+1413520125 c:\documents and settings\administrator\桌面\3d_clock\3d.h
+
+1413520196 source:c:\documents and settings\administrator\桌面\3d_clock\3d.cpp
+	"SDL.h"
+	<math.h>
+	"3D.h"
+	"draw.h"
+
+1412242778 source:c:\documents and settings\administrator\桌面\3d_clock\asicc.c
+
+1413338694 c:\documents and settings\administrator\桌面\3d_clock\draw.h
+
+1413519684 source:c:\documents and settings\administrator\桌面\3d_clock\draw.cpp
+	<SDL.h>
+
+1414160836 source:f:\3d_clock\asicc.c
+
+1420709127 source:f:\3d_clock\draw.cpp
+	<SDL/SDL.h>
+	"draw.h"
+
+1420708645 source:f:\3d_clock\main.cpp
+	<time.h>
+	<math.h>
+	"SDL/SDL.h"
+	<unistd.h>
+	<pthread.h>
+	"3D.h"
+	"draw.h"
+
+1419737770 f:\3d_clock\3d.h
+
+1420633571 source:f:\3d_clock\3d.cpp
+	"SDL/SDL.h"
+	<math.h>
+	"3D.h"
+	"draw.h"
+	"ASICC.h"
+
+1420633591 f:\3d_clock\draw.h
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_audio.h"
+	"SDL_cdrom.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_loadso.h"
+	"SDL_mutex.h"
+	"SDL_rwops.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_video.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1326110988 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_config.h
+	"SDL_platform.h"
+	"SDL_config_dreamcast.h"
+	"SDL_config_macos.h"
+	"SDL_config_macosx.h"
+	"SDL_config_symbian.h"
+	"SDL_config_win32.h"
+	"SDL_config_os2.h"
+	"SDL_config_minimal.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_platform.h
+
+1326110994 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_config_win32.h
+	"SDL_platform.h"
+
+1326111000 c:\program files\codeblocks\sdl-1.2.15\include\sdl\begin_code.h
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\close_code.h
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_endian.h
+	"SDL_stdinc.h"
+	<endian.h>
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_cdrom.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_active.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_quit.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_active.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keysym.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_keysym.h
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\program files\codeblocks\sdl-1.2.15\include\sdl\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1413709764 f:\3d_clock\thr.h
+
+1413779374 source:f:\3d_clock\thr.cpp
+	"3D.h"
+
+1419737731 source:c:\3d_clock\3d.cpp
+	"SDL/SDL.h"
+	<math.h>
+	"3D.h"
+	"draw.h"
+	"ASICC.h"
+
+1419737769 c:\3d_clock\3d.h
+
+1419504616 c:\3d_clock\draw.h
+
+1413709764 c:\3d_clock\thr.h
+
+1414160835 source:c:\3d_clock\asicc.c
+
+1416543360 source:c:\3d_clock\draw.cpp
+	<SDL/SDL.h>
+	"draw.h"
+
+1419737573 source:c:\3d_clock\main.cpp
+	<time.h>
+	<math.h>
+	"SDL/SDL.h"
+	<unistd.h>
+	<pthread.h>
+	"3D.h"
+	"draw.h"
+
+1414204684 source:g:\3d_clock\3d.cpp
+	"SDL/SDL.h"
+	<math.h>
+	"3D.h"
+	"draw.h"
+
+1414204037 g:\3d_clock\3d.h
+
+1413338640 g:\3d_clock\draw.h
+
+1414160835 source:g:\3d_clock\asicc.c
+
+1414160835 source:g:\3d_clock\draw.cpp
+	<SDL/SDL.h>
+
+1414164946 source:g:\3d_clock\main.cpp
+	<time.h>
+	"SDL.h"
+	<windows.h>
+	<pthread.h>
+	"3D.h"
+
+1414229144 source:j:\3d_clock\3d.cpp
+	"SDL/SDL.h"
+	<math.h>
+	"3D.h"
+	"draw.h"
+
+1414204038 j:\3d_clock\3d.h
+
+1413338640 j:\3d_clock\draw.h
+
+1414160836 source:j:\3d_clock\asicc.c
+
+1414160836 source:j:\3d_clock\draw.cpp
+	<SDL/SDL.h>
+
+1414234924 source:j:\3d_clock\main.cpp
+	<time.h>
+	"SDL/SDL.h"
+	<windows.h>
+	<pthread.h>
+	"3D.h"
+
+1414233372 source:j:\3d_clock\icon.rc
+
+1414469068 source:f:\3d_clock\icon.rc
+
+1414160836 f:\3d_clock\asicc.h
+
+1414160836 c:\3d_clock\asicc.h
+
+1414469068 source:c:\3d_clock\icon.rc
+
+1421319413 source:f:\3d_clock_pc\3d.cpp
+	"SDL/SDL.h"
+	<math.h>
+	"3D.h"
+	"draw.h"
+	"ASICC.h"
+	<stdio.h>
+
+1421232960 f:\3d_clock_pc\3d.h
+
+1421401615 f:\3d_clock_pc\draw.h
+
+1414160836 f:\3d_clock_pc\asicc.h
+
+1414469068 source:f:\3d_clock_pc\icon.rc
+
+1421402011 source:f:\3d_clock_pc\main.cpp
+	<time.h>
+	<math.h>
+	"SDL/SDL.h"
+	<unistd.h>
+	<pthread.h>
+	"3D.h"
+	"draw.h"
+
+1421402074 source:f:\3d_clock_pc\draw.cpp
+	<SDL/SDL.h>
+	"draw.h"
+	"3D.h"
+
+1421319414 source:c:\users\ganhailin\desktop\3d_clock_pc\3d_clock_pc\3d.cpp
+	"SDL/SDL.h"
+	<math.h>
+	"3D.h"
+	"draw.h"
+	"ASICC.h"
+	<stdio.h>
+
+1421232962 c:\users\ganhailin\desktop\3d_clock_pc\3d_clock_pc\3d.h
+
+1421401616 c:\users\ganhailin\desktop\3d_clock_pc\3d_clock_pc\draw.h
+
+1414160836 c:\users\ganhailin\desktop\3d_clock_pc\3d_clock_pc\asicc.h
+
+1421402076 source:c:\users\ganhailin\desktop\3d_clock_pc\3d_clock_pc\draw.cpp
+	<SDL/SDL.h>
+	"draw.h"
+	"3D.h"
+
+1414469068 source:c:\users\ganhailin\desktop\3d_clock_pc\3d_clock_pc\icon.rc
+
+1421319414 source:c:\users\海林\desktop\程序\3d_clock_pc\3d.cpp
+	"SDL/SDL.h"
+	<math.h>
+	"3D.h"
+	"draw.h"
+	"ASICC.h"
+	<stdio.h>
+
+1421232962 c:\users\海林\desktop\程序\3d_clock_pc\3d.h
+
+1421401616 c:\users\海林\desktop\程序\3d_clock_pc\draw.h
+
+1414160836 c:\users\海林\desktop\程序\3d_clock_pc\asicc.h
+
+1421402076 source:c:\users\海林\desktop\程序\3d_clock_pc\draw.cpp
+	<SDL/SDL.h>
+	"draw.h"
+	"3D.h"
+
+1414469068 source:c:\users\海林\desktop\程序\3d_clock_pc\icon.rc
+
+1421556995 source:c:\users\海林\desktop\程序\3d_clock_pc\main.cpp
+	<time.h>
+	<math.h>
+	"SDL/SDL.h"
+	<unistd.h>
+	<pthread.h>
+	"3D.h"
+	"draw.h"
+
+1453649314 source:d:\3d_clock_pc\3d.cpp
+	"SDL2/SDL.h"
+	<math.h>
+	<stdlib.h>
+	"3D.h"
+	"draw.h"
+	"ASICC.h"
+	<string.h>
+	<stdio.h>
+
+1450598358 d:\3d_clock_pc\3d.h
+
+1450935744 d:\3d_clock_pc\draw.h
+
+1414160836 d:\3d_clock_pc\asicc.h
+
+1451022144 source:d:\3d_clock_pc\draw.cpp
+	<SDL2/SDL.h>
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	"draw.h"
+	"touch.h"
+	"3D.h"
+
+1414469068 source:d:\3d_clock_pc\icon.rc
+
+1450935488 source:d:\3d_clock_pc\main.cpp
+	<time.h>
+	<math.h>
+	"SDL2/SDL.h"
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<pthread.h>
+	"3D.h"
+	"draw.h"
+	"touch.h"
+
+1450935744 source:d:\3d_clock_pc\touch.cpp
+	<SDL2/SDL.h>
+	<pthread.h>
+	"touch.h"
+	<mem.h>
+	<time.h>
+	<math.h>
+
+1451022022 d:\3d_clock_pc\touch.h
+
+1453649314 source:d:\16d16emu\3d.cpp
+	"SDL2/SDL.h"
+	<math.h>
+	<stdlib.h>
+	"3D.h"
+	"draw.h"
+	"ASICC.h"
+	<string.h>
+	<stdio.h>
+
+1474682498 d:\16d16emu\3d.h
+
+1450935744 d:\16d16emu\draw.h
+
+1414160836 d:\16d16emu\asicc.h
+
+1474538538 source:d:\16d16emu\draw.cpp
+	<SDL2/SDL.h>
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	"draw.h"
+	"touch.h"
+	"3D.h"
+
+1451022022 d:\16d16emu\touch.h
+
+1414469068 source:d:\16d16emu\icon.rc
+
+1450935744 source:d:\16d16emu\touch.cpp
+	<SDL2/SDL.h>
+	<pthread.h>
+	"touch.h"
+	<mem.h>
+	<time.h>
+	<math.h>
+
+1475055936 source:d:\16d16emu\main.cpp
+	<time.h>
+	<math.h>
+	"SDL2/SDL.h"
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<pthread.h>
+	<string.h>
+	"3D.h"
+	"draw.h"
+	"touch.h"
+	"tetris3d.h"
+
+1474535120 source:d:\16d16emu\ledblock.cpp
+
+1475055580 source:d:\16d16emu\tetris3d.cpp
+	"tetris3d.h"
+
+1475055888 d:\16d16emu\ledblock.h
+	<stdint.h>
+	"3D.h"
+	<mem.h>
+	<stdlib.h>
+
+1474554608 source:d:\16d16emu\test.cpp
+	<stdint-gcc.h>
+
+1475056482 d:\16d16emu\tetris3d.h
+	"ledblock.h"
+
+1475431238 source:c:\users\gan\desktop\16d16emu\3d.cpp
+	"SDL2/SDL.h"
+	<math.h>
+	<stdlib.h>
+	"3D.h"
+	"draw.h"
+	"ASICC.h"
+	<string.h>
+	<stdio.h>
+
+1474682498 c:\users\gan\desktop\16d16emu\3d.h
+
+1475425761 c:\users\gan\desktop\16d16emu\draw.h
+
+1414160836 c:\users\gan\desktop\16d16emu\asicc.h
+
+1475426200 source:c:\users\gan\desktop\16d16emu\draw.cpp
+	<SDL2/SDL.h>
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	"draw.h"
+	"touch.h"
+	"3D.h"
+
+1451022022 c:\users\gan\desktop\16d16emu\touch.h
+
+1414469068 source:c:\users\gan\desktop\16d16emu\icon.rc
+
+1475462328 source:c:\users\gan\desktop\16d16emu\main.cpp
+	<time.h>
+	<math.h>
+	"SDL2/SDL.h"
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<pthread.h>
+	<string.h>
+	"3D.h"
+	"draw.h"
+	"touch.h"
+	"tetris3d.h"
+
+1475465902 c:\users\gan\desktop\16d16emu\tetris3d.h
+	"ledblock.h"
+
+1475466109 c:\users\gan\desktop\16d16emu\ledblock.h
+	<stdint.h>
+	"3D.h"
+	<mem.h>
+	<stdlib.h>
+
+1450935744 source:c:\users\gan\desktop\16d16emu\touch.cpp
+	<SDL2/SDL.h>
+	<pthread.h>
+	"touch.h"
+	<mem.h>
+	<time.h>
+	<math.h>
+
+1475466032 source:c:\users\gan\desktop\16d16emu\tetris3d.cpp
+	"tetris3d.h"
+	<time.h>
+	<unistd.h>
+
+1474535120 source:c:\users\gan\desktop\16d16emu\ledblock.cpp
+

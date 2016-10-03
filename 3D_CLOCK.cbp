@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="16D16EMU" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/16D16EMU" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-std=c++11" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="-lmingw32 -lSDL2 -lSDL2main -lSDL2.dll -luser32 -lgdi32 -lwinmm -ldxguid -mwindows" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/16D16EMU" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectCompilerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add option="-std=c++11" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-lmingw32 -lSDL2 -lSDL2main -lSDL2.dll -luser32 -lgdi32 -lwinmm -ldxguid -mwindows" />
+				</Linker>
+			</Target>
+			<Target title="ReleaseIntel">
+				<Option output="bin/ReleaseIntel/16D16EMU" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/ReleaseIntel/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectCompilerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-march=corei7" />
+					<Add option="-O3" />
+					<Add option="-std=c++11" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-lmingw32 -lSDL2 -lSDL2main -lSDL2.dll -luser32 -lgdi32 -lwinmm -ldxguid -mwindows" />
+				</Linker>
+			</Target>
+			<Target title="ReleaseAMD">
+				<Option output="bin/ReleaseAMD/16D16EMU" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/ReleaseAMD/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectCompilerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-march=athlon-xp" />
+					<Add option="-O3" />
+					<Add option="-std=c++11" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-lmingw32 -lSDL2 -lSDL2main -lSDL2.dll -luser32 -lgdi32 -lwinmm -ldxguid -mwindows" />
+				</Linker>
+			</Target>
+			<Target title="Release i7">
+				<Option output="bin/Release i7/16D16EMU" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release i7/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectCompilerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-march=corei7-avx" />
+					<Add option="-O3" />
+					<Add option="-std=c++11" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-lmingw32 -lSDL2 -lSDL2main -lSDL2.dll -luser32 -lgdi32 -lwinmm -ldxguid -mwindows" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="C:/Program Files/CodeBlocks/SDL-1.2.15/include" />
+		</Compiler>
+		<Unit filename="3D.cpp" />
+		<Unit filename="3D.h" />
+		<Unit filename="ASICC.h" />
+		<Unit filename="docs/index.html" />
+		<Unit filename="draw.cpp" />
+		<Unit filename="draw.h" />
+		<Unit filename="icon.bmp" />
+		<Unit filename="icon.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="ledblock.cpp" />
+		<Unit filename="ledblock.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="tetris3d.cpp" />
+		<Unit filename="tetris3d.h" />
+		<Unit filename="touch.cpp" />
+		<Unit filename="touch.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<DoxyBlocks>
+				<comment_style block="4" line="0" />
+				<doxyfile_project output_language="Chinese" />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
