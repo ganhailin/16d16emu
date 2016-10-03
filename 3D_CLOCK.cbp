@@ -98,7 +98,6 @@
 		<Unit filename="icon.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
-		<Unit filename="ledblock.cpp" />
 		<Unit filename="ledblock.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="rs232.c">

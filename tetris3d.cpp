@@ -63,7 +63,7 @@ int tetris3d::cleanlay(int x)
         for(int x=0; x<4; x++)
             for(int y=0; y<4; y++)
             {
-                color=this->led.getled(x*2,y*2,(z+1)*2,0);
+                color=this->led.Color24to8(this->led.getled(x*2,y*2,(z+1)*2,0));
                 this->led.setled(x*2,y*2,z*2,color);
                 this->led.setled(x*2,y*2,z*2+1,color);
                 this->led.setled(x*2+1,y*2,z*2,color);
@@ -361,14 +361,14 @@ int block::bknew()
         this->nowblock.points[0]= {.x=1,.y=0,.c=0};
         this->nowblock.points[1]= {.x=0,.y=0,.c=0};
         this->nowblock.points[2]= {.x=-1,.y=0,.c=0};
-        this->nowblock.color=0xffffff;
+        this->nowblock.color=this->display->Color24to8(0xffff00);
         break;
     case 1:///L
         this->nowblock.numofbk=3;
         this->nowblock.points[0]= {.x=1,.y=0,.c=0};
         this->nowblock.points[1]= {.x=0,.y=0,.c=0};
         this->nowblock.points[2]= {.x=0,.y=0,.c=1};
-        this->nowblock.color=0xffffff;
+        this->nowblock.color=this->display->Color24to8(0x00ffff);
         break;
     case 2:///O
         this->nowblock.numofbk=4;
@@ -376,7 +376,7 @@ int block::bknew()
         this->nowblock.points[1]= {.x=1,.y=0,.c=-1};
         this->nowblock.points[2]= {.x=0,.y=0,.c=0};
         this->nowblock.points[3]= {.x=0,.y=0,.c=-1};
-        this->nowblock.color=0xffffff;
+        this->nowblock.color=this->display->Color24to8(0xff00ff);
         break;
     case 3:///V
         this->nowblock.numofbk=4;
@@ -384,7 +384,7 @@ int block::bknew()
         this->nowblock.points[1]= {.x=0,.y=0,.c=1};
         this->nowblock.points[2]= {.x=0,.y=1,.c=0};
         this->nowblock.points[3]= {.x=1,.y=0,.c=0};
-        this->nowblock.color=0xffffff;
+        this->nowblock.color=this->display->Color24to8(0xff0000);
         break;
     case 4:///Z
         this->nowblock.numofbk=4;
@@ -392,7 +392,7 @@ int block::bknew()
         this->nowblock.points[1]= {.x=0,.y=1,.c=-1};
         this->nowblock.points[2]= {.x=0,.y=0,.c=-1};
         this->nowblock.points[3]= {.x=-1,.y=0,.c=0};
-        this->nowblock.color=0xffffff;
+        this->nowblock.color=this->display->Color24to8(0x00ff00);
         break;
     case 5:///S
         this->nowblock.numofbk=4;
@@ -400,12 +400,12 @@ int block::bknew()
         this->nowblock.points[1]= {.x=0,.y=1,.c=0};
         this->nowblock.points[2]= {.x=0,.y=0,.c=-1};
         this->nowblock.points[3]= {.x=-1,.y=0,.c=-1};
-        this->nowblock.color=0xffffff;
+        this->nowblock.color=this->display->Color24to8(0x0000ff);
         break;
     case 6:///D
         this->nowblock.numofbk=1;
         this->nowblock.points[0]= {.x=0,.y=0,.c=0};
-        this->nowblock.color=0xffffff;
+        this->nowblock.color=this->display->Color24to8(0xffffff);
         break;
     default:
         break;

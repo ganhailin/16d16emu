@@ -64,7 +64,7 @@ void * pth2(void* args)
 
 void * pth3(void* args)
 {
-    int keybefor[6]= {0,0,0,0,0,0};
+//    int keybefor[6]= {0,0,0,0,0,0};
     while(1)
     {
 
@@ -221,7 +221,7 @@ void * pth4(void* args)
     {
         if(done)
             break;
-        for(int i=0; i<3; i++)
+        for(int i=0; i<20; i++)
             usleep(100000);
         tet.gameloop();
     }
