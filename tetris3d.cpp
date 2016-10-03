@@ -14,24 +14,42 @@ void tetris3d::newgame()
 }
 int tetris3d::gameloop()
 {
+    int cntofl=0;
     while(lock2)usleep(10);
     lock=1;
-    for(int z=0; z<8; z++)
+    if(nextnew)
     {
-        int cnt=0;
-        for(int x=0; x<4; x++)
-            for(int y=0; y<4; y++)
-            {
-                cnt+=this->led.getled(x*2,y*2,z*2,0)?1:0;
-            }
-        if(cnt==16)
-            this->cleanlay(z);
-    }
+        nextnew=0;
+        goto jump;
 
-    if(this->isingame)
+    }
+    else if(this->isingame)
         if(this->nowblock.bkdown())
-            if(this->nowblock.bknew())
+        {
+            for(int z=0; z<8; z++)
+            {
+                int cnt=0;
+                for(int x=0; x<4; x++)
+                    for(int y=0; y<4; y++)
+                    {
+                        cnt+=this->led.getled(x*2,y*2,z*2,0)?1:0;
+                    }
+                if(cnt==16)
+                {
+                    this->cleanlay(z);
+                    cntofl++;
+                    z--;
+                }
+            }
+            if(cntofl)
+            {
+                nextnew=1;
+                return 0;
+            }
+
+jump:            if(this->nowblock.bknew())
                 this->isingame=0;
+        }
     this->led.flashled();
     lock=0;
     return 0;
@@ -45,7 +63,7 @@ int tetris3d::cleanlay(int x)
         for(int x=0; x<4; x++)
             for(int y=0; y<4; y++)
             {
-                color=this->led.getled(x*2,y*2,(z+1)*2);
+                color=this->led.getled(x*2,y*2,(z+1)*2,0);
                 this->led.setled(x*2,y*2,z*2,color);
                 this->led.setled(x*2,y*2,z*2+1,color);
                 this->led.setled(x*2+1,y*2,z*2,color);
@@ -322,12 +340,20 @@ int block::bknew()
     int error=0;
     srand(clock());
     this->type=rand()%7;
+    ///For test this->type=6;
+
     this->posx=0;               ///####
     this->posy=0;               ///####
     this->posz=7;               ///##0#--------左上角为（-2，-2），O为原点。
-    this->rox=rand()%4;         ///####
-    this->roy=rand()%4;
-    this->roz=rand()%4;
+
+/*
+    this->rox=1;         ///####
+    this->roy=1;
+    this->roz=0;
+   */ ///For test
+     this->rox=rand()%4;         ///####
+     this->roy=rand()%4;
+     this->roz=rand()%4;
     switch(this->type)
     {
     case 0:///I

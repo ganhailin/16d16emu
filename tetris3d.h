@@ -125,5 +125,6 @@ private:
     int scores=0;
     block nowblock;
     int isingame=0;
+    int nextnew=0;
 };
 #endif // TETRIS3D_H

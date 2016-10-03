@@ -101,6 +101,10 @@
 		<Unit filename="ledblock.cpp" />
 		<Unit filename="ledblock.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="rs232.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="rs232.h" />
 		<Unit filename="tetris3d.cpp" />
 		<Unit filename="tetris3d.h" />
 		<Unit filename="touch.cpp" />

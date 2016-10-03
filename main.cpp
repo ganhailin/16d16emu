@@ -10,6 +10,7 @@
 #include "draw.h"
 #include "touch.h"
 #include "tetris3d.h"
+#include "rs232.h"
 int fps=0,fpss;
 bool done = false;
 bool drawdone = false;
@@ -17,6 +18,11 @@ pointR3D zero= {.rx=0,.ry=0,.rz=0};
 extern char sharebuff[100];
 tetris3d tet;
 
+typedef struct
+{
+    int x,y,z,rz,keys;
+} gamepad_t;
+gamepad_t getgamepad();
 
 void * pth1(void* args)
 {
@@ -58,10 +64,73 @@ void * pth2(void* args)
 
 void * pth3(void* args)
 {
+    int keybefor[6]= {0,0,0,0,0,0};
     while(1)
     {
 
-        usleep(10000);
+        usleep(100);
+/*        gamepad_t nowpad=getgamepad();
+        if(nowpad.x>191)
+            nowpad.x=1;
+        else if(nowpad.x<63)
+            nowpad.x=2;
+        else
+            nowpad.x=0;
+        if(nowpad.y>191)
+            nowpad.y=1;
+        else if(nowpad.y<63)
+            nowpad.y=2;
+        else
+            nowpad.y=0;
+        if(nowpad.z>191)
+            nowpad.z=1;
+        else if(nowpad.z<63)
+            nowpad.z=2;
+        else
+            nowpad.z=0;
+        if(nowpad.rz>191)
+            nowpad.rz=1;
+        else if(nowpad.rz<63)
+            nowpad.rz=2;
+        else
+            nowpad.rz=0;
+        if(nowpad.x!=keybefor[0])
+            if(nowpad.x==1)
+                tet.input(1,0);
+            else if(nowpad.x==2)
+                tet.input(2,0);
+        keybefor[0]=nowpad.x;
+        if(nowpad.y!=keybefor[1])
+            if(nowpad.y==1)
+                tet.input(3,0);
+            else if(nowpad.y==2)
+                tet.input(4,0);
+        keybefor[1]=nowpad.y;
+        if(nowpad.z!=keybefor[2])
+            if(nowpad.z==1)
+                tet.input(0,1);
+            else if(nowpad.z==2)
+                tet.input(0,2);
+        keybefor[2]=nowpad.z;
+        if(nowpad.rz!=keybefor[3])
+            if(nowpad.rz==1)
+                tet.input(0,3);
+            else if(nowpad.rz==2)
+                tet.input(0,4);
+        keybefor[3]=nowpad.rz;
+
+        if((nowpad.keys&0x01)!=keybefor[4])
+            if(nowpad.keys&0x01)
+                tet.input(0,5);
+        keybefor[4]=nowpad.keys&0x01;
+
+
+        if((nowpad.keys&0x02)!=keybefor[5])
+            if(nowpad.keys&0x02)
+                tet.input(0,6);
+        keybefor[5]=nowpad.keys&0x02;
+
+*/
         uint32_t *key=getkey();
         if(*key&0x01)
             movecam(0,0,1);
@@ -120,7 +189,7 @@ void * pth3(void* args)
         if(*key&0x8000)
         {
             *key&=~0x8000;
-           tet.input(0,3);
+            tet.input(0,3);
 
         }
         if(*key&0x10000)
@@ -140,6 +209,7 @@ void * pth3(void* args)
             *key&=~0x40000;
             tet.input(0,6);
         }
+
     }
 
     return NULL;
@@ -151,15 +221,36 @@ void * pth4(void* args)
     {
         if(done)
             break;
-        for(int i=0; i<40; i++)
+        for(int i=0; i<3; i++)
             usleep(100000);
         tet.gameloop();
     }
     return NULL;
 }
 
+gamepad_t getgamepad()
+{
+    uint8_t read[20];
+    while(1)
+    {
+        usleep(5);
+        RS232_PollComport(0,read,1);
+        if(read[0]==0xff)break;
+    }
+    RS232_PollComport(0,read,5);
+    gamepad_t pad;
+    pad.x=read[0];
+    pad.y=read[1];
+    pad.z=read[2];
+    pad.rz=read[3];
+    pad.keys=read[4];
+    return pad;
+}
+
+
 int main(int argc, char *argv[])
 {
+    RS232_OpenComport(0, 115200);
     pthread_t thread,thread2,thread3,thread4;
     setdisplay(1280,720);
     initSDL();
