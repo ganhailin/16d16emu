@@ -11,6 +11,9 @@ void tetris3d::newgame()
     this->nowblock.bknew();
     lock=0;
     lock2=0;
+    status=0;
+    time=1;
+    timerup=1;
 }
 int tetris3d::gameloop()
 {
@@ -47,8 +50,12 @@ int tetris3d::gameloop()
                 return 0;
             }
 
-jump:            if(this->nowblock.bknew())
+jump:
+            if(this->nowblock.bknew())
+            {
                 this->isingame=0;
+                this->status=2;
+            }
         }
     this->led.flashled();
     lock=0;
@@ -74,11 +81,14 @@ int tetris3d::cleanlay(int x)
                 this->led.setled(x*2+1,y*2+1,z*2+1,color);
             }
     }
+    scores++;
     return 0;
 }
 
 int tetris3d::input(int mv,int rot)
 {
+    if(status!=0)return 0;
+    if(!isingame)return 0;
     lock2=1;
     while(lock)usleep(10);
     switch(mv)
@@ -87,6 +97,7 @@ int tetris3d::input(int mv,int rot)
     case 2:///右移
     case 3:///前移
     case 4:///后移
+        // case 5:///下降
         this->nowblock.bkmove(mv);
         break;
     default:
@@ -195,6 +206,9 @@ int block::bkmove(uint8_t x)
         return 0;
 
         break;
+    // case 5:///下降
+    //     this->parent->gameloop();
+    //     break;
     default:
         break;
     }
@@ -346,14 +360,14 @@ int block::bknew()
     this->posy=0;               ///####
     this->posz=7;               ///##0#--------左上角为（-2，-2），O为原点。
 
-/*
-    this->rox=1;         ///####
-    this->roy=1;
-    this->roz=0;
-   */ ///For test
-     this->rox=rand()%4;         ///####
-     this->roy=rand()%4;
-     this->roz=rand()%4;
+    /*
+        this->rox=1;         ///####
+        this->roy=1;
+        this->roz=0;
+       */ ///For test
+    this->rox=rand()%4;         ///####
+    this->roy=rand()%4;
+    this->roz=rand()%4;
     switch(this->type)
     {
     case 0:///I

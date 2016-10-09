@@ -283,6 +283,12 @@ void SDLloop(bool * drawdone,bool * done)
                 case SDLK_l:
                     key|=0x40000;
                     break;
+                case SDLK_v:
+                    key|=0x80000;
+                    break;
+                case SDLK_b:
+                    key|=0x100000;
+                    break;
 
                 case SDLK_LSHIFT:
                 case SDLK_RSHIFT:

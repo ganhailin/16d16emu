@@ -1,3 +1,12 @@
+/********************************************//**
+ *
+ *
+ *这是一个led对我的3D库的一个适配
+ *
+ *
+ *
+ ***********************************************/
+
 #ifndef LEDBLOCK_H
 #define LEDBLOCK_H
 #include <stdint.h>
@@ -7,6 +16,7 @@
 class ledemu
 {
 public:
+
     ledemu(void)
     {
 
@@ -120,6 +130,5 @@ private:
     uint8_t * buffbk;
     uint8_t x,y,z;
     pointR3D zero= {.rx=0,.ry=0,.rz=0};
-
 };
 #endif // LEDBLOCK_H
