@@ -54,6 +54,7 @@ public:
 
     ledemu(uint8_t xi,uint8_t yi,uint8_t zi)
     {
+        this->rd=this->zero;
         x=xi;
         y=yi;
         z=zi;
@@ -65,6 +66,7 @@ public:
     }
     void init(uint8_t xi,uint8_t yi,uint8_t zi)
     {
+        this->rd=this->zero;
         x=xi;
         y=yi;
         z=zi;
@@ -88,23 +90,45 @@ public:
     }
     void displayleds(void)
     {
-        drawline3D(setpoint(31,70,31,0xffffff),setpoint(31,-81,31,0xffffff),0xffffff);
-        drawline3D(setpoint(-41,70,31,0xffffff),setpoint(-41,-81,31,0xffffff),0xffffff);
-        drawline3D(setpoint(31,70,-41,0xffffff),setpoint(31,-81,-41,0xffffff),0xffffff);
-        drawline3D(setpoint(-41,70,-41,0xffffff),setpoint(-41,-81,-41,0xffffff),0xffffff);
-        drawline3D(setpoint(-41,-81,-41,0xffffff),setpoint(-41,-81,31,0xffffff),0xffffff);
-        drawline3D(setpoint(-41,-81,-41,0xffffff),setpoint(31,-81,-41,0xffffff),0xffffff);
-        drawline3D(setpoint(31,-81,-41,0xffffff),setpoint(31,-81,31,0xffffff),0xffffff);
-        drawline3D(setpoint(31,-81,31,0xffffff),setpoint(-41,-81,31,0xffffff),0xffffff);
-        drawline3D(setpoint(-41,71,-41,0xffffff),setpoint(-41,71,31,0xffffff),0xffffff);
-        drawline3D(setpoint(-41,71,-41,0xffffff),setpoint(31,71,-41,0xffffff),0xffffff);
-        drawline3D(setpoint(31,71,-41,0xffffff),setpoint(31,71,31,0xffffff),0xffffff);
-        drawline3D(setpoint(31,71,31,0xffffff),setpoint(-41,71,31,0xffffff),0xffffff);
+        int i=1;
+        M_R3D rm;
+        point3D arrow[9]= {setpoint(0,78,30,0xffffff),
+                           setpoint(30,78,0,0xffffff   ),
+                           setpoint(-30,78,0,0xffffff   ),
+                           setpoint(14,78,0,0xffffff   ),
+                           setpoint(14,78,-30,0xffffff  ),
+                           setpoint(-14,78,-30,0xffffff  ),
+                           setpoint(-14,78,-30,0xffffff ),
+                           setpoint(-14,78,0,0xffffff   ),
+                           setpoint(14,78,0,0xffffff  )
+                          };
+
+        point3D point[24]= {setpoint(37,76,37,0xffffff),     setpoint(37,-76,37,0xffffff),
+                            setpoint(-37,76,37,0xffffff),    setpoint(-37,-76,37,0xffffff),
+                            setpoint(37,76,-37,0xffffff),    setpoint(37,-76,-37,0xffffff),
+                            setpoint(-37,76,-37,0xffffff),   setpoint(-37,-76,-37,0xffffff),
+                            setpoint(-37,-76,-37,0xffffff),  setpoint(-37,-76,37,0xffffff),
+                            setpoint(-37,-76,-37,0xffffff),  setpoint(37,-76,-37,0xffffff),
+                            setpoint(37,-76,-37,0xffffff),   setpoint(37,-76,37,0xffffff),
+                            setpoint(37,-76,37,0xffffff),    setpoint(-37,-76,37,0xffffff),
+                            setpoint(-37,76,-37,0xffffff),   setpoint(-37,76,37,0xffffff),
+                            setpoint(-37,76,-37,0xffffff),   setpoint(37,76,-37,0xffffff),
+                            setpoint(37,76,-37,0xffffff),    setpoint(37,76,37,0xffffff),
+                            setpoint(37,76,37,0xffffff),     setpoint(-37,76,37,0xffffff)
+                           };
+        getrm(&rm,&rd);
+        R3DM(point,rm,24);
+        R3DM(arrow,rm,9);
+
+        for(int i=0; i<12; i++)
+            drawline3D(point[2*i],point[2*i+1],0xffffff);
+        for(int i=0; i<9; i+=3)
+            fillthr3D(arrow[i],arrow[i+1],arrow[i+2],0x8080ff);
         for (int x=0; x<8; x++)
             for(int y=0; y<8; y++)
                 for(int z=0; z<16; z++)
                     if(getled(x,y,z,0))
-                    Drawbox2((x-this->x/2)*10,(z-this->z/2)*10, (y-this->y/2)*10, 1, zero, zero,getled(x,y,z) );
+                        DrawboxM((x-this->x/2)*10+5,(z-this->z/2)*10+5, (y-this->y/2)*10+5, 1, rd,getled(x,y,z),i--);
     }
     uint32_t getled(uint8_t x,uint8_t y,uint8_t z,bool i=1)
     {
@@ -125,6 +149,7 @@ public:
         free(buffbk);
 
     }
+    pointR3D rd;
 private:
     uint8_t * buff;
     uint8_t * buffbk;

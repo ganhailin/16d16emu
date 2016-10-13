@@ -20,5 +20,5 @@ void updatescreen(void);
 void exitSDL(void);
 void SDLloop(bool*,bool*);
 uint32_t* getkey(void);
-
+#define DISABLE_MOUSE
 #endif // DRAW_H_INCLUDED

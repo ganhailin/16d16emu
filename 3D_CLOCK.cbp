@@ -91,10 +91,8 @@
 		<Unit filename="3D.cpp" />
 		<Unit filename="3D.h" />
 		<Unit filename="ASICC.h" />
-		<Unit filename="docs/index.html" />
 		<Unit filename="draw.cpp" />
 		<Unit filename="draw.h" />
-		<Unit filename="icon.bmp" />
 		<Unit filename="icon.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>

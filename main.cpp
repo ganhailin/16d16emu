@@ -126,18 +126,20 @@ void * pth3(void* args)///-----------------------------------ÕâÊÇÄ£Äâ°´¼üÉ¨ÃèÖÐ¶
 
         */
         uint32_t *key=getkey();
-        if(*key&0x01)
-            movecam(0,0,1);
-        if(*key&0x02)
-            movecam(0,0,-1);
+        //if(*key&0x01)
+        //movecam(0,0,1);
+        //if(*key&0x02)
+        //movecam(0,0,-1);
         if(*key&0x04)
-            movecam(1,0,0);
+            tet.led.rd.ry-=D2R(0.5f);
+        //     movecam(1,0,0);
         if(*key&0x08)
-            movecam(-1,0,0);
-        if(*key&0x10)
-            movecam(0,-1,0);
-        if(*key&0x20)
-            movecam(0,1,0);
+            tet.led.rd.ry+=D2R(0.5f);
+        //     movecam(-1,0,0);
+        // if(*key&0x10)
+        //     movecam(0,-1,0);
+        // if(*key&0x20)
+        //     movecam(0,1,0);
         if(*key&0x0100)
         {
             *key&=~0x0100;
@@ -224,9 +226,9 @@ void * pth4(void* args)///-----------------------------Ä£ÄâÒ»¸ö¼ÆÊ±Æ÷ÖÐ¶Ï£¬100ºÁ
 int main(int argc, char *argv[])
 {
     pthread_t thread,thread2,thread3,thread4;
-    setdisplay(1280,720);
+    setdisplay(480,720);
     initSDL();
-    setcam(setpoint(0,0,-150,0),setpointR(0,0,0));
+    setcam(setpoint(0,0,-200,0),setpointR(0,0,0));
     seteye(setpoint(0,0,-500,0));
     pthread_create(&thread,NULL,pth1,NULL);
     pthread_create(&thread2,NULL,pth2,NULL);

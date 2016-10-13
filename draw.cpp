@@ -193,12 +193,13 @@ void SDLloop(bool * drawdone,bool * done)
                    sprintf(sharebuff,"num:%d",event.tfinger.fingerId);
                    break;
               */
+#ifndef DISABLE_MOUSE
                case SDL_MOUSEMOTION:
                    int x,y;
                    SDL_GetMouseState(&x,&y);
                    movecamR(-D2R(y-yrad/2)*3,-D2R(x-xrad/2)*3,0);
                    SDL_WarpMouseInWindow(window,xrad/2,yrad/2);
-
+#endif // DISABLE_MOUSE
                 break;
 
             case SDL_KEYDOWN :

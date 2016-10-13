@@ -161,7 +161,6 @@ public:
         if(time%20==0)
             if(timerup)
                 gameloop();
-
     }
 private:
     uint32_t time=0;

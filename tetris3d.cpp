@@ -17,6 +17,7 @@ void tetris3d::newgame()
 }
 int tetris3d::gameloop()
 {
+    if(status!=0)return 0;
     int cntofl=0;
     while(lock2)usleep(10);
     lock=1;

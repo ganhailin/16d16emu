@@ -45,6 +45,7 @@ typedef struct
     int c;
 } pointf;
 float D2R(float D);
+float R2D(float D);
 void drawchar(int x,int y,unsigned char ch,int c);
 void drawstring(int x,int y,unsigned char* ch,int c);
 void DrawPixel(int x, int y, int c);
