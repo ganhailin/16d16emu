@@ -8,6 +8,6 @@ TARGET = ./3DClock
 SOURCES = $(wildcard *.c *.cpp)
 OBJS = $(patsubst %.c,%.o,$(patsubst %.cpp,%.o,$(SOURCES)))
 $(TARGET) : $(OBJS)
-	$(CXX) $(OBJS) -o $(TARGET)   -lSDL
+	$(CXX) $(OBJS) -o $(TARGET)   -lSDL2
 clean:
 	rm -rf *.o 3DClock

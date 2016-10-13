@@ -1,7 +1,7 @@
 /********************************************//**
  *
  *
- *ÕâÊÇÒ»¸öled¶ÔÎÒµÄ3D¿âµÄÒ»¸öÊÊÅä
+ *ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ledï¿½ï¿½ï¿½Òµï¿½3Dï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  *
  *
  *
@@ -11,7 +11,7 @@
 #define LEDBLOCK_H
 #include <stdint.h>
 #include "3D.h"
-#include <mem.h>
+#include <memory.h>
 #include <stdlib.h>
 class ledemu
 {

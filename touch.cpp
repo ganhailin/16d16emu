@@ -1,7 +1,7 @@
 #include <SDL2/SDL.h>
 #include <pthread.h>
 #include "touch.h"
-#include <mem.h>
+#include <memory.h>
 #include <time.h>
 #include <math.h>
 touch_t touch_now;
@@ -103,5 +103,4 @@ int statusupdata(int p)
 {
     return 0;
 }
-
 
