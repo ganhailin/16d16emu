@@ -3,6 +3,7 @@
 #include <unistd.h>
 void tetris3d::newgame()
 {
+    if(isingame)return;
     lock=1;
     this->isingame=1;
     this->led.clearled();
@@ -354,7 +355,7 @@ int block::bknew()
 {
     int error=0;
     srand(clock());
-    this->type=rand()%7;
+    this->type=rand()%4;
     ///For test this->type=6;
 
     this->posx=0;               ///####
@@ -393,7 +394,7 @@ int block::bknew()
         this->nowblock.points[3]= {.x=0,.y=0,.c=-1};
         this->nowblock.color=this->display->Color24to8(0xff00ff);
         break;
-    case 3:///V
+    case 6:///V
         this->nowblock.numofbk=4;
         this->nowblock.points[0]= {.x=0,.y=0,.c=0};
         this->nowblock.points[1]= {.x=0,.y=0,.c=1};
@@ -417,7 +418,7 @@ int block::bknew()
         this->nowblock.points[3]= {.x=-1,.y=0,.c=-1};
         this->nowblock.color=this->display->Color24to8(0x0000ff);
         break;
-    case 6:///D
+    case 3:///D
         this->nowblock.numofbk=1;
         this->nowblock.points[0]= {.x=0,.y=0,.c=0};
         this->nowblock.color=this->display->Color24to8(0xffffff);

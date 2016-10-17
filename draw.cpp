@@ -1,4 +1,6 @@
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
+
 #include<stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -14,6 +16,7 @@ bool candraw=true;
 pointR3D rd3;
 bool isfirst=true,isfullscreen=false;
 char  sharebuff[100];
+TTF_Font* displayfont;
 void setdisplay(int x,int y)
 {
     xrad=x;
@@ -95,12 +98,13 @@ void Draw_Pixel(int x, int y, Uint32 c)
 
 void initSDL(void)
 {
-    if ( SDL_Init(SDL_INIT_EVERYTHING) < 0 )
+    if ( SDL_Init(SDL_INIT_EVERYTHING) < 0||TTF_Init()<0 )
     {
         exit(1);
     }
     else
     {
+        displayfont = TTF_OpenFont("sketchy.ttf",64);
         window = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, xrad, yrad,SDL_WINDOW_SHOWN );
         if( window == NULL )
         {
@@ -130,6 +134,18 @@ void clrscreen(void)
 
 void updatescreen(void )
 {
+/*
+    SDL_Color color={255,255,255};
+    SDL_Surface *text_surface;
+if(!(text_surface=TTF_RenderUTF8_Solid(displayfont,"Hello World!",color))) {
+    //handle error here, perhaps print TTF_GetError at least
+} else {
+    SDL_BlitSurface(text_surface,NULL,screen,NULL);
+    //perhaps we can reuse it, but I assume not for simplicity.
+    SDL_FreeSurface(text_surface);
+}
+
+*/
     SDL_UpdateWindowSurface( window );
 
 }

@@ -158,7 +158,7 @@ public:
     {
         if(timerup)
             time++;
-        if(time%20==0)
+        if(time%10==0)
             if(timerup)
                 gameloop();
     }
