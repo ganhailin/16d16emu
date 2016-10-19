@@ -104,6 +104,7 @@ public:
     ledemu led;
     tetris3d(void)
     {}
+
     void init()
     {
         this->led.init(8,8,16);
@@ -161,6 +162,10 @@ public:
         if(time%10==0)
             if(timerup)
                 gameloop();
+    }
+    float getangle()///return the look from head clock angle
+    {
+        return led.getangle();
     }
 private:
     uint32_t time=0;

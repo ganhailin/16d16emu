@@ -35,19 +35,19 @@ void * pth1(void* args)///---------------------------¥ÀƒÀÀ¢∆¡œﬂ≥Ã
         clrscreen();
         clrdeepbuff();
         sprintf(str,"FPS:%d",fpss);
-        //sprintf(str2,"Num of Gamepad:%d",SDL_NumJoysticks());
-        sprintf(sharebuff,"Number of Finger(s):%d",getfingernum());
+        sprintf(str2,"Angle of cube:%f",R2D(tet.getangle()));
+        //sprintf(sharebuff,"Number of Finger(s):%d",getfingernum());
         drawstring(0,0,(unsigned char*)str,0xffffff);
-        //drawstring(0,10,(unsigned char*)str2,0xffffff);
-        //drawstring(0,20,(unsigned char*)sharebuff,0xffffff);
+        drawstring(0,10,(unsigned char*)str2,0xffffff);
+        drawstring(0,20,(unsigned char*)sharebuff,0xffffff);
         drawstring(0,30,(unsigned char*)tet.getmsg(),0xffffff);
-       /* for(int i=0;i<4;i++)
-        {
-        sprintf(str2,"Key%d:%d",i,axis[i]);
+        /* for(int i=0;i<4;i++)
+         {
+         sprintf(str2,"Key%d:%d",i,axis[i]);
 
-        drawstring(0,40+i*10,(unsigned char*)str2,0xffffff);
+         drawstring(0,40+i*10,(unsigned char*)str2,0xffffff);
 
-        }*/
+         }*/
 
         tet.gamedraw();
         updatescreen();
@@ -154,7 +154,8 @@ void * pth3(void* args)///-----------------------------------’‚ «ƒ£ƒ‚∞¥º¸…®√Ë÷–∂
             if(B_back_old)
                 tet.pause();
         B_back_old=B_back;
-        padrz=SDL_GameControllerGetButton(controller,SDL_CONTROLLER_BUTTON_LEFTSHOULDER)-SDL_GameControllerGetButton(controller,SDL_CONTROLLER_BUTTON_RIGHTSHOULDER);
+        padrz=axis[2];
+        //padrz=SDL_GameControllerGetButton(controller,SDL_CONTROLLER_BUTTON_LEFTSHOULDER)-SDL_GameControllerGetButton(controller,SDL_CONTROLLER_BUTTON_RIGHTSHOULDER);
         if(!padrz)
             if(padrz_old==1)
                 tet.input(0,4);
@@ -175,7 +176,8 @@ void * pth3(void* args)///-----------------------------------’‚ «ƒ£ƒ‚∞¥º¸…®√Ë÷–∂
             else if(pady_old==-1)
                 tet.input(4,0);
         pady_old=pady;
-        padrx=axis[2];
+        padrx=SDL_GameControllerGetButton(controller,SDL_CONTROLLER_BUTTON_LEFTSHOULDER)-SDL_GameControllerGetButton(controller,SDL_CONTROLLER_BUTTON_RIGHTSHOULDER);
+        //padrx=axis[2];
         if(!padrx)
             if(padrx_old==1)
                 tet.input(0,5);
@@ -346,31 +348,63 @@ int main(int argc, char *argv[])
 
 void getgamepad( )
 {
-    for(int j=0; j<4; j++)
-    {
-        int i=SDL_GameControllerGetAxis(controller,(SDL_GameControllerAxis)j);
-        if(axis[j])
+    float x=SDL_GameControllerGetAxis(controller,(SDL_GameControllerAxis)0)/(float)0xffff*2.0;
+    float y=SDL_GameControllerGetAxis(controller,(SDL_GameControllerAxis)1)/(float)0xffff*2.0;
+    float absleft=sqrt(x*x+y*y);
+    float angle=-atan2(x,y)-tet.getangle();
+    angle-=PI/4;
+    while(angle<0)angle+=2*PI;
+    while(angle>2*PI)angle-=2*PI;
+    int left=angle*2/PI;
+    x=SDL_GameControllerGetAxis(controller,(SDL_GameControllerAxis)2)/(float)0xffff*2.0;
+    y=SDL_GameControllerGetAxis(controller,(SDL_GameControllerAxis)3)/(float)0xffff*2.0;
+    float absright=sqrt(x*x+y*y);
+    angle=-atan2(x,y)-tet.getangle();
+    angle-=PI/4;
+    while(angle<0)angle+=2*PI;
+    while(angle>2*PI)angle-=2*PI;
+    int right=angle*2/PI;
+    sprintf(sharebuff,"angle if axis1:%d,%f:%d,%f",left,absleft,right,absright);
+    if(absleft<0.4)
+        axis[0]=axis[1]=0;
+    if(absright<0.4)
+        axis[2]=axis[3]=0;
+    if(absleft>0.8)
+        switch(left)
         {
-            if(abs(i)<32767/4)
-                axis[j]=0;
-            else if(abs(i)>32767/2)
-                if(i>0)
-                    axis[j]=1;
-                else
-                    axis[j]=-1;
+        case 0:///Left
+            axis[0]=-1;
+            break;
+        case 1:///Up
+            axis[1]=-1;
+            break;
+        case 2:///Right
+            axis[0]=1;
+            break;
+        case 3:///Down
+            axis[1]=1;
+            break;
+        default:
+            break;
         }
-        else
+    if(absright>0.8)
+        switch(right)
         {
-            if(abs(i)<32767/4)
-                axis[j]=0;
-            else if(abs(i)>32767/2)
-                if(i>0)
-                    axis[j]=1;
-                else
-                    axis[j]=-1;
-
+        case 0:///Left
+            axis[2]=1;
+            break;
+        case 1:///Up
+            axis[3]=-1;
+            break;
+        case 2:///Right
+            axis[2]=-1;
+            break;
+        case 3:///Down
+            axis[3]=1;
+            break;
+        default:
+            break;
         }
-    }
 
 
 }

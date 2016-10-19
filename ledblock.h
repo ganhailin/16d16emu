@@ -11,8 +11,9 @@
 #define LEDBLOCK_H
 #include <stdint.h>
 #include "3D.h"
-#include <mem.h>
+#include <memory.h>
 #include <stdlib.h>
+#include <math.h>
 class ledemu
 {
 public:
@@ -150,6 +151,11 @@ public:
 
     }
     pointR3D rd;
+    float getangle()///return the look from head clock angle
+    {
+        return -rd.ry;
+    }
+
 private:
     uint8_t * buff;
     uint8_t * buffbk;
