@@ -141,16 +141,29 @@ public:
         switch(status)
         {
         case -1:
-            sprintf(output,"Welcome to Tetris3D ! Press \"R\" to begin.");
+            sprintf(output,"Welcome to Tetris3D ! Press \"START\" to begin.");
             break;
         case 0:
-            sprintf(output,"Gaming...Scores:%010d",scores);
+            sprintf(output,"Gaming");
             break;
         case 2:
-            sprintf(output,"Failed...Scores:%010d",scores);
+            sprintf(output,"Press \"START\" to restart.");
             break;
         case 1:
-            sprintf(output,"Paused...Scores:%010d",scores);
+            sprintf(output,"Paused");
+            break;
+        }
+        return output;
+    }
+    char * getmsg2()
+    {
+        switch(status)
+        {
+        case -1:
+            sprintf(output," ");
+            break;
+        default:
+            sprintf(output,"Scores:%010d",scores);
             break;
         }
         return output;
@@ -167,10 +180,11 @@ public:
     {
         return led.getangle();
     }
+    int status=-1;
 private:
     uint32_t time=0;
     int timerup=0;
-    char output[30];
+    char output[100];
     int lock=0;
     int lock2=0;
     int cleanlay(int x);
@@ -179,6 +193,6 @@ private:
     block nowblock;
     int isingame=0;
     int nextnew=0;
-    int status=-1;
+
 };
 #endif // TETRIS3D_H

@@ -1,5 +1,11 @@
+#define SDL_VIDEO_DRIVER_WINDOWS
+#define _WIN32_WINNT 0x0601
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_syswm.h>
+#include   <windows.h>
+#include <winuser.h>
 
 #include<stdio.h>
 #include <stdlib.h>
@@ -7,6 +13,7 @@
 #include "draw.h"
 #include "touch.h"
 #include "3D.h"
+#include "tetris3d.h"
 SDL_Surface *screen;
 SDL_Window* window = NULL;
 int xrad,yrad,xradf,yradf;
@@ -17,6 +24,13 @@ pointR3D rd3;
 bool isfirst=true,isfullscreen=false;
 char  sharebuff[100];
 TTF_Font* displayfont;
+TTF_Font* displayfont2;
+SDL_Renderer* pWndRenderer = NULL;//窗口渲染器
+SDL_Surface * pTextSurface = NULL;//文本表面
+SDL_Texture* pTextTexture = NULL;//文本纹理
+SDL_Texture* pTextTexture2 = NULL;//文本纹理
+extern tetris3d tet;
+HWND hwnd;
 void setdisplay(int x,int y)
 {
     xrad=x;
@@ -104,21 +118,41 @@ void initSDL(void)
     }
     else
     {
-        displayfont = TTF_OpenFont("sketchy.ttf",64);
-        window = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, xrad, yrad,SDL_WINDOW_SHOWN );
+        displayfont = TTF_OpenFont("BAUHS93.TTF",115);
+        displayfont2 = TTF_OpenFont("BAUHS93.TTF",23);
+        window = SDL_CreateWindow( "Tetris3D", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, xrad, yrad,SDL_WINDOW_SHOWN|SDL_WINDOW_BORDERLESS );
         if( window == NULL )
         {
             exit(1);
         }
         else
         {
+            pWndRenderer = SDL_CreateRenderer(window, -1, 0);
             screen = SDL_GetWindowSurface( window );
             SDL_FillRect( screen, NULL, SDL_MapRGB( screen->format, 0, 0, 0 ) );
             //SDL_Delay( 2000 );
         }
     }
-    SDL_WarpMouseInWindow(window,xrad/2,yrad/2);
+
+    SDL_SysWMinfo info;
+    SDL_VERSION(&info.version);
+    if ( SDL_GetWindowWMInfo(window, &info) )
+
+        hwnd=info.info.win.window;
+
+    if(!hwnd)
+        exit(0);
+    LONG t = GetWindowLong(hwnd, GWL_EXSTYLE);
+    t |= WS_EX_LAYERED;
+    SetWindowLong(hwnd, GWL_EXSTYLE, t);
+    t = GetWindowLong(hwnd, GWL_STYLE);
+    // t &= ~(WS_MAXIMIZE|WS_VSCROLL|WS_DLGFRAME|WS_SYSMENU|WS_SIZEBOX);
+    //SetWindowLong(hwnd, GWL_STYLE, WS_POPUP|WS_VISIBLE|WS_BORDER|WS_DLGFRAME);
+    SetLayeredWindowAttributes(hwnd,0,0,1);
+    sprintf(sharebuff,"%x",t);
+    //SDL_WarpMouseInWindow(window,xrad/2,yrad/2);
     //setfullscreen();
+    SDL_SetSurfaceBlendMode(screen,SDL_BLENDMODE_BLEND);
     Gan_touch_init(window);
     atexit(exitSDL);
 }
@@ -134,18 +168,79 @@ void clrscreen(void)
 
 void updatescreen(void )
 {
-/*
-    SDL_Color color={255,255,255};
-    SDL_Surface *text_surface;
-if(!(text_surface=TTF_RenderUTF8_Solid(displayfont,"Hello World!",color))) {
-    //handle error here, perhaps print TTF_GetError at least
-} else {
-    SDL_BlitSurface(text_surface,NULL,screen,NULL);
-    //perhaps we can reuse it, but I assume not for simplicity.
-    SDL_FreeSurface(text_surface);
-}
 
-*/
+    SDL_Color color= {210,105,30,250};
+    SDL_Color color2= {0,0,0,250};
+    SDL_Surface *text_surface;
+    SDL_Rect rect= {10,130,470,250};
+    if(tet.status==2)
+    {
+        if(!(text_surface=TTF_RenderText_Blended_Wrapped(displayfont,"Game Over",color,400)))
+        {
+            //handle error here, perhaps print TTF_GetError at least
+        }
+        else
+        {
+            rect= {100,130,470,250};
+            SDL_BlitSurface(text_surface,0,screen,&rect);
+            //perhaps we can reuse it, but I assume not for simplicity.
+            SDL_FreeSurface(text_surface);
+        }
+    }
+
+    if(tet.status==-1)
+    {
+        if(!(text_surface=TTF_RenderText_Solid(displayfont,"Tetris 3D",color)))
+        {
+            //handle error here, perhaps print TTF_GetError at least
+        }
+        else
+        {
+            rect= {10,130,470,250};
+            SDL_BlitSurface(text_surface,0,screen,&rect);
+            //perhaps we can reuse it, but I assume not for simplicity.
+            SDL_FreeSurface(text_surface);
+        }
+    }
+    else
+    {
+        if(!(text_surface=TTF_RenderText_Solid(displayfont2,"Tetris 3D",color)))
+        {
+            //handle error here, perhaps print TTF_GetError at least
+        }
+        else
+        {
+            rect= {0,0,470,250};
+            SDL_BlitSurface(text_surface,0,screen,&rect);
+            //perhaps we can reuse it, but I assume not for simplicity.
+            SDL_FreeSurface(text_surface);
+        }
+    }
+
+    if(!(text_surface=TTF_RenderText_Blended(displayfont2,tet.getmsg(),color)))
+    {
+        //handle error here, perhaps print TTF_GetError at least
+    }
+    else
+    {
+        rect= {10,590,470,250};
+        SDL_BlitSurface(text_surface,0,screen,&rect);
+        //perhaps we can reuse it, but I assume not for simplicity.
+        SDL_FreeSurface(text_surface);
+    }
+
+    if(!(text_surface=TTF_RenderText_Blended(displayfont2,tet.getmsg2(),color)))
+    {
+        //handle error here, perhaps print TTF_GetError at least
+    }
+    else
+    {
+        rect= {270,590,470,250};
+        SDL_BlitSurface(text_surface,0,screen,&rect);
+        //perhaps we can reuse it, but I assume not for simplicity.
+        SDL_FreeSurface(text_surface);
+    }
+
     SDL_UpdateWindowSurface( window );
 
 }
@@ -189,32 +284,32 @@ void SDLloop(bool * drawdone,bool * done)
                 touchmo(event.tfinger);
                 break;
 
-            /*  case SDL_FINGERMOTION:
-                  movecamR(event.tfinger.dy*90,event.tfinger.dx*90,0);
-                  fingery=event.tfinger.y*yrad;
-                  fingerx=event.tfinger.x*xrad;
-                  sprintf(sharebuff,"%d",fingerx);
-                  drawcer(fingerx,fingery,20,0xffffff);
-                  break;
-              case SDL_MULTIGESTURE:
-                  if(event.mgesture.numFingers==4)
-                      *done = true;
-                  //      if(event.mgesture.numFingers==3)
-                  //          setfullscreen();
-                  //        usleep(1000000);
-                  break;
-               case SDL_FINGERMOTION:
+                /*  case SDL_FINGERMOTION:
+                      movecamR(event.tfinger.dy*90,event.tfinger.dx*90,0);
+                      fingery=event.tfinger.y*yrad;
+                      fingerx=event.tfinger.x*xrad;
+                      sprintf(sharebuff,"%d",fingerx);
+                      drawcer(fingerx,fingery,20,0xffffff);
+                      break;
+                  case SDL_MULTIGESTURE:
+                      if(event.mgesture.numFingers==4)
+                          *done = true;
+                      //      if(event.mgesture.numFingers==3)
+                      //          setfullscreen();
+                      //        usleep(1000000);
+                      break;
+                   case SDL_FINGERMOTION:
 
-                 //  sprintf(sharebuff,"num:%d,x:%f,y:%f,ID:%d",event.mgesture.type,event.mgesture.dDist,event.mgesture.dTheta,event.mgesture.touchId);
-                   sprintf(sharebuff,"num:%d",event.tfinger.fingerId);
-                   break;
-              */
+                     //  sprintf(sharebuff,"num:%d,x:%f,y:%f,ID:%d",event.mgesture.type,event.mgesture.dDist,event.mgesture.dTheta,event.mgesture.touchId);
+                       sprintf(sharebuff,"num:%d",event.tfinger.fingerId);
+                       break;
+                  */
 #ifndef DISABLE_MOUSE
-               case SDL_MOUSEMOTION:
-                   int x,y;
-                   SDL_GetMouseState(&x,&y);
-                   movecamR(-D2R(y-yrad/2)*3,-D2R(x-xrad/2)*3,0);
-                   SDL_WarpMouseInWindow(window,xrad/2,yrad/2);
+            case SDL_MOUSEMOTION:
+                int x,y;
+                SDL_GetMouseState(&x,&y);
+                movecamR(-D2R(y-yrad/2)*3,-D2R(x-xrad/2)*3,0);
+                SDL_WarpMouseInWindow(window,xrad/2,yrad/2);
 #endif // DISABLE_MOUSE
                 break;
 

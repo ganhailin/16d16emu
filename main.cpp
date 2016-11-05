@@ -37,10 +37,10 @@ void * pth1(void* args)///---------------------------¥ÀƒÀÀ¢∆¡œﬂ≥Ã
         sprintf(str,"FPS:%d",fpss);
         sprintf(str2,"Angle of cube:%f",R2D(tet.getangle()));
         //sprintf(sharebuff,"Number of Finger(s):%d",getfingernum());
-        drawstring(0,0,(unsigned char*)str,0xffffff);
+       /* drawstring(0,0,(unsigned char*)str,0xffffff);
         drawstring(0,10,(unsigned char*)str2,0xffffff);
         drawstring(0,20,(unsigned char*)sharebuff,0xffffff);
-        drawstring(0,30,(unsigned char*)tet.getmsg(),0xffffff);
+        drawstring(0,30,(unsigned char*)tet.getmsg(),0xffffff);*/
         /* for(int i=0;i<4;i++)
          {
          sprintf(str2,"Key%d:%d",i,axis[i]);
@@ -141,8 +141,8 @@ void * pth3(void* args)///-----------------------------------’‚ «ƒ£ƒ‚∞¥º¸…®√Ë÷–∂
         //padx=SDL_GameControllerGetAxis(controller,SDL_CONTROLLER_AXIS_LEFTX )
 
         static int padx,padx_old,pady,pady_old,padrx,padrx_old,padry,padry_old,padrz,padrz_old,B_start,B_start_old,B_back,B_back_old,B_B,B_B_old,B_A,B_A_old;
-        float padcamrz;
-        padcamrz=SDL_GameControllerGetAxis(controller,SDL_CONTROLLER_AXIS_TRIGGERRIGHT)/32768.0/2.0 -SDL_GameControllerGetAxis(controller,SDL_CONTROLLER_AXIS_TRIGGERLEFT)/32768.0/2.0;
+        //float padcamrz;
+//        padcamrz=SDL_GameControllerGetAxis(controller,SDL_CONTROLLER_AXIS_TRIGGERRIGHT)/32768.0/2.0 -SDL_GameControllerGetAxis(controller,SDL_CONTROLLER_AXIS_TRIGGERLEFT)/32768.0/2.0;
         tet.led.rd.ry+=D2R(0.05);
         B_start=SDL_GameControllerGetButton(controller,SDL_CONTROLLER_BUTTON_START );
         if(!B_start)
@@ -364,7 +364,7 @@ void getgamepad( )
     while(angle<0)angle+=2*PI;
     while(angle>2*PI)angle-=2*PI;
     int right=angle*2/PI;
-    sprintf(sharebuff,"angle if axis1:%d,%f:%d,%f",left,absleft,right,absright);
+    //sprintf(sharebuff,"angle if axis1:%d,%f:%d,%f",left,absleft,right,absright);
     if(absleft<0.4)
         axis[0]=axis[1]=0;
     if(absright<0.4)

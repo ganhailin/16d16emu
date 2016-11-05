@@ -589,7 +589,7 @@
 
 1474535120 source:c:\users\gan\desktop\16d16emu\ledblock.cpp
 
-1478175472 source:c:\users\gan\github\16d16emu\3d.cpp
+1478176018 source:c:\users\gan\github\16d16emu\3d.cpp
 	"SDL2/SDL.h"
 	<math.h>
 	<stdlib.h>
@@ -605,15 +605,19 @@
 
 1414160836 c:\users\gan\github\16d16emu\asicc.h
 
-1476701925 source:c:\users\gan\github\16d16emu\draw.cpp
+1478367559 source:c:\users\gan\github\16d16emu\draw.cpp
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
+	<SDL2/SDL_syswm.h>
+	<windows.h>
+	<winuser.h>
 	<stdio.h>
 	<stdlib.h>
 	<unistd.h>
 	"draw.h"
 	"touch.h"
 	"3D.h"
+	"tetris3d.h"
 
 1451022022 c:\users\gan\github\16d16emu\touch.h
 
@@ -621,12 +625,12 @@
 
 1474535120 source:c:\users\gan\github\16d16emu\ledblock.cpp
 
-1476715687 source:c:\users\gan\github\16d16emu\tetris3d.cpp
+1478358047 source:c:\users\gan\github\16d16emu\tetris3d.cpp
 	"tetris3d.h"
 	<time.h>
 	<unistd.h>
 
-1476880458 c:\users\gan\github\16d16emu\tetris3d.h
+1478361212 c:\users\gan\github\16d16emu\tetris3d.h
 	"ledblock.h"
 	<stdio.h>
 
@@ -645,7 +649,7 @@
 	<time.h>
 	<math.h>
 
-1478175618 source:c:\users\gan\github\16d16emu\main.cpp
+1478363317 source:c:\users\gan\github\16d16emu\main.cpp
 	<time.h>
 	<math.h>
 	"SDL2/SDL.h"

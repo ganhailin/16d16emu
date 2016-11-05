@@ -20,7 +20,7 @@ int tetris3d::gameloop()
 {
     if(status!=0)return 0;
     int cntofl=0;
-    while(lock2)usleep(10);
+    while(lock2)usleep(1);
     lock=1;
     if(nextnew)
     {
@@ -83,7 +83,7 @@ int tetris3d::cleanlay(int x)
                 this->led.setled(x*2+1,y*2+1,z*2+1,color);
             }
     }
-    scores++;
+    scores+=100;
     return 0;
 }
 
@@ -91,8 +91,8 @@ int tetris3d::input(int mv,int rot)
 {
     if(status!=0)return 0;
     if(!isingame)return 0;
+    while(lock)usleep(1);
     lock2=1;
-    while(lock)usleep(10);
     switch(mv)
     {
     case 1:///×óÒÆ
