@@ -53,6 +53,13 @@ static float deepbuff[xmax][ymax];
 
 void DrawPixel3D(int x, int y, float z, int c)
 {
+    float a=25000/sqrt((x-xrad/2)*(x-xrad/2)*8000+(y-yrad/2-160)*(y-yrad/2-160)*8000+(z)*(z)*12800);
+    int r,g,b;
+    r=((int)((c>>16)&0xff))*a;
+    g=((int)((c>>8)&0xff))*a;
+    b=((int)((c>>0)&0xff))*a;
+    c=((r&0xff)<<16)|((g&0xff)<<8)|((b&0xff)<<0);
+
     if (x >= 0 && x < xrad && y >= 0 && y < yrad)
         if (z <= deepbuff[x][y])
         {
@@ -929,7 +936,7 @@ void DrawboxM(float x, float y, float z, float r, pointR3D rd, int color, int is
     fillthr3D(box[2],box[4],box[6],color);
     fillthr3D(box[1],box[5],box[3],color);
     fillthr3D(box[5],box[3],box[7],color);/*
-    int color2=(((color/65535)&0xff)*2/3)<<4|(((color=256)&0xff)*2/3)<<2|((color&0xff)*2/3);
+    int color2=0;
     drawline3D(box[4], box[6], color2);
     drawline3D(box[4], box[5], color2);
     drawline3D(box[5], box[7], color2);

@@ -93,15 +93,15 @@ public:
     {
         int i=1;
         M_R3D rm;
-        point3D arrow[9]= {setpoint(0,78,30,0xffffff),
-                           setpoint(30,78,0,0xffffff   ),
-                           setpoint(-30,78,0,0xffffff   ),
-                           setpoint(14,78,0,0xffffff   ),
-                           setpoint(14,78,-30,0xffffff  ),
-                           setpoint(-14,78,-30,0xffffff  ),
-                           setpoint(-14,78,-30,0xffffff ),
-                           setpoint(-14,78,0,0xffffff   ),
-                           setpoint(14,78,0,0xffffff  )
+        point3D arrow[9]= {setpoint(0,-78,30,0xffffff),
+                           setpoint(30,-78,0,0xffffff   ),
+                           setpoint(-30,-78,0,0xffffff   ),
+                           setpoint(14,-78,0,0xffffff   ),
+                           setpoint(14,-78,-30,0xffffff  ),
+                           setpoint(-14,-78,-30,0xffffff  ),
+                           setpoint(-14,-78,-30,0xffffff ),
+                           setpoint(-14,-78,0,0xffffff   ),
+                           setpoint(14,-78,0,0xffffff  )
                           };
 
         point3D point[24]= {setpoint(37,76,37,0xffffff),     setpoint(37,-76,37,0xffffff),
@@ -125,12 +125,13 @@ public:
             drawline3D(point[2*i],point[2*i+1],0xffffff);
         for(int i=0; i<9; i+=3)
             fillthr3D(arrow[i],arrow[i+1],arrow[i+2],0x8080ff);
-        for (int x=0; x<8; x++)
-            for(int y=0; y<8; y++)
-                for(int z=0; z<16; z++)
+        for (int x=0; x<8; x+=2)
+            for(int y=0; y<8; y+=2)
+                for(int z=0; z<16; z+=2)
                     if(getled(x,y,z,0))
-                        DrawboxM((x-this->x/2)*10+5,(z-this->z/2)*10+5, (y-this->y/2)*10+5, 1, rd,getled(x,y,z),i--);
+                        DrawboxM((x-this->x/2)*10+10,(z-this->z/2)*10+10, (y-this->y/2)*10+10, 5, rd,color[z/2],i--);
     }
+    uint32_t color[8]={0xffffff,0xff00ff,0x00ffff,0xffff00,0xff0000,0xff00,0xff,0xffffff};
     uint32_t getled(uint8_t x,uint8_t y,uint8_t z,bool i=1)
     {
         uint32_t color=*(buffbk+z*64+y*8+x);

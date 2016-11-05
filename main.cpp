@@ -143,7 +143,7 @@ void * pth3(void* args)///-----------------------------------ÕâÊÇÄ£Äâ°´¼üÉ¨ÃèÖÐ¶
         static int padx,padx_old,pady,pady_old,padrx,padrx_old,padry,padry_old,padrz,padrz_old,B_start,B_start_old,B_back,B_back_old,B_B,B_B_old,B_A,B_A_old;
         float padcamrz;
         padcamrz=SDL_GameControllerGetAxis(controller,SDL_CONTROLLER_AXIS_TRIGGERRIGHT)/32768.0/2.0 -SDL_GameControllerGetAxis(controller,SDL_CONTROLLER_AXIS_TRIGGERLEFT)/32768.0/2.0;
-        tet.led.rd.ry+=D2R(padcamrz);
+        tet.led.rd.ry+=D2R(0.05);
         B_start=SDL_GameControllerGetButton(controller,SDL_CONTROLLER_BUTTON_START );
         if(!B_start)
             if(B_start_old)
@@ -335,8 +335,8 @@ int main(int argc, char *argv[])
                 break;
         }
 
-    setcam(setpoint(0,0,-200,0),setpointR(0,0,0));
-    seteye(setpoint(0,0,-500,0));
+    setcam(setpoint(0,200,-200,0),setpointR(D2R(45),0,0));
+    seteye(setpoint(0,0,-800,0));
     pthread_create(&thread,NULL,pth1,NULL);
     pthread_create(&thread2,NULL,pth2,NULL);
     pthread_create(&thread3,NULL,pth3,NULL);
