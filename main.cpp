@@ -20,7 +20,7 @@ extern char sharebuff[100];
 tetris3d tet;
 SDL_GameController *controller = NULL;
 int axis[4]= {0,0,0,0};
-
+bool haspad=false;
 
 void * pth1(void* args)///---------------------------¥ÀƒÀÀ¢∆¡œﬂ≥Ã
 {
@@ -34,13 +34,13 @@ void * pth1(void* args)///---------------------------¥ÀƒÀÀ¢∆¡œﬂ≥Ã
             break;
         clrscreen();
         clrdeepbuff();
-        sprintf(str,"FPS:%d",fpss);
-        sprintf(str2,"Angle of cube:%f",R2D(tet.getangle()));
+        //sprintf(str,"FPS:%d",fpss);
+        //sprintf(str2,"Angle of cube:%f",R2D(tet.getangle()));
         //sprintf(sharebuff,"Number of Finger(s):%d",getfingernum());
-       /* drawstring(0,0,(unsigned char*)str,0xffffff);
-        drawstring(0,10,(unsigned char*)str2,0xffffff);
+        //drawstring(0,0,(unsigned char*)str,0xffffff);
+        //drawstring(0,10,(unsigned char*)str2,0xffffff);
         drawstring(0,20,(unsigned char*)sharebuff,0xffffff);
-        drawstring(0,30,(unsigned char*)tet.getmsg(),0xffffff);*/
+        // drawstring(0,30,(unsigned char*)tet.getmsg(),0xffffff);
         /* for(int i=0;i<4;i++)
          {
          sprintf(str2,"Key%d:%d",i,axis[i]);
@@ -72,6 +72,7 @@ void * pth2(void* args)///-----------------------------------’‚ «fpsº∆ ˝œﬂ≥Ã
 
 void * pth3(void* args)///-----------------------------------’‚ «ƒ£ƒ‚∞¥º¸…®√Ë÷–∂œ
 {
+    int i;
 //    int keybefor[6]= {0,0,0,0,0,0};
     while(1)
     {
@@ -209,7 +210,11 @@ void * pth3(void* args)///-----------------------------------’‚ «ƒ£ƒ‚∞¥º¸…®√Ë÷–∂
         tet.gameloop();
         tet.input(2,0);
          ***********************************************/
-
+        float angle=tet.getangle();
+        angle-=PI/4;
+        while(angle<0)angle+=2*PI;
+        while(angle>2*PI)angle-=2*PI;
+        int left=angle*2/PI;
 
         uint32_t *key=getkey();
         //if(*key&0x01)
@@ -228,67 +233,177 @@ void * pth3(void* args)///-----------------------------------’‚ «ƒ£ƒ‚∞¥º¸…®√Ë÷–∂
         //     movecam(0,1,0);
         if(*key&0x0100)
         {
+
             *key&=~0x0100;
-            tet.input(1,0);
+            switch(left)
+            {
+            case 0:
+                left=3;
+                break;
+            case 1:
+                left=2;
+                break;
+            case 2:
+                left=4;
+                break;
+            case 3:
+                left=1;
+                break;
+
+            }
+            tet.input(left,0);
         }
         if(*key&0x0200)
         {
+
             *key&=~0x0200;
-            tet.input(2,0);
+            switch(left)
+            {
+            case 0:
+                left=4;
+                break;
+            case 1:
+                left=1;
+                break;
+            case 2:
+                left=3;
+                break;
+            case 3:
+                left=2;
+                break;
+            }
+            tet.input(left,0);
+
         }
         if(*key&0x0400)
         {
+
             *key&=~0x0400;
-            tet.input(4,0);
+            switch(left)
+            {
+            case 0:
+                left=1;
+                break;
+            case 1:
+                left=3;
+                break;
+            case 2:
+                left=2;
+                break;
+            case 3:
+                left=4;
+                break;
+            }
+            tet.input(left,0);
+
         }
         if(*key&0x0800)
         {
             *key&=~0x0800;
-            tet.input(3,0);
+
+            switch(left)
+            {
+            case 0:
+                left=2;
+                break;
+            case 1:
+                left=4;
+                break;
+            case 2:
+                left=1;
+                break;
+            case 3:
+                left=3;
+                break;
+            }
+            tet.input(left,0);
+
         }
+
+        sprintf(sharebuff,"%d",left);
+
+
+
         if(*key&0x1000)
         {
             *key&=~0x1000;
             tet.newgame();
         }
-        if(*key&0x2000)
-        {
-            *key&=~0x2000;
-            tet.input(0,1);
-        }
+
+
+
+
+
+//        if(*key&0x2000)
+//        {
+//            *key&=~0x2000;
+//            tet.input(0,1);
+//        }
         if(*key&0x4000)
         {
             *key&=~0x4000;
-            tet.input(0,2);
+            switch(left)
+            {
+            case 0:
+                i=2;
+                break;
+            case 1:
+                i=4;
+                break;
+            case 2:
+                i=1;
+                break;
+            case 3:
+                i=3;
+                break;
+            }
+
+            tet.input(0,i);
         }
-        if(*key&0x8000)
-        {
-            *key&=~0x8000;
-            tet.input(0,3);
-        }
+//        if(*key&0x8000)
+//        {
+//            *key&=~0x8000;
+//            tet.input(0,3);
+//        }
         if(*key&0x10000)
         {
             *key&=~0x10000;
-            tet.input(0,4);
+                        switch(left)
+            {
+            case 0:
+                i=4;
+                break;
+            case 1:
+                i=1;
+                break;
+            case 2:
+                i=3;
+                break;
+            case 3:
+                i=2;
+                break;
+            }
+
+            tet.input(0,i);
         }
-        if(*key&0x20000)
-        {
-            *key&=~0x20000;
-            tet.input(0,5);
-        }
+//        if(*key&0x20000)
+//        {
+//            *key&=~0x20000;
+//            tet.input(0,5);
+//        }
         if(*key&0x40000)
         {
             *key&=~0x40000;
             tet.input(0,6);
         }
-        if(*key&0x80000)
+        if(*key&0x2000)
         {
-            *key&=~0x80000;
+            *key&=~0x2000;
             tet.gameloop();
         }
-        if(*key&0x100000)
+        if(*key&0x8000)
         {
-            *key&=~0x100000;
+            *key&=~0x8000;
             tet.pause();
         }
 
@@ -332,7 +447,11 @@ int main(int argc, char *argv[])
         {
             controller = SDL_GameControllerOpen(i);
             if (controller)
+            {
+                haspad=true;
                 break;
+
+            }
         }
 
     setcam(setpoint(0,200,-200,0),setpointR(D2R(45),0,0));

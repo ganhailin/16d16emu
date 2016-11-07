@@ -148,7 +148,7 @@ void initSDL(void)
     t = GetWindowLong(hwnd, GWL_STYLE);
     // t &= ~(WS_MAXIMIZE|WS_VSCROLL|WS_DLGFRAME|WS_SYSMENU|WS_SIZEBOX);
     //SetWindowLong(hwnd, GWL_STYLE, WS_POPUP|WS_VISIBLE|WS_BORDER|WS_DLGFRAME);
-    SetLayeredWindowAttributes(hwnd,0,0,1);
+   // SetLayeredWindowAttributes(hwnd,0,0,1);
     sprintf(sharebuff,"%x",t);
     //SDL_WarpMouseInWindow(window,xrad/2,yrad/2);
     //setfullscreen();

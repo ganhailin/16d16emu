@@ -1,6 +1,8 @@
 #include "tetris3d.h"
 #include <time.h>
 #include <unistd.h>
+extern char sharebuff[100];
+
 void tetris3d::newgame()
 {
     if(isingame)return;
@@ -89,10 +91,12 @@ int tetris3d::cleanlay(int x)
 
 int tetris3d::input(int mv,int rot)
 {
+
     if(status!=0)return 0;
     if(!isingame)return 0;
     while(lock)usleep(1);
     lock2=1;
+    //sprintf(sharebuff,"%d",mv);
     switch(mv)
     {
     case 1:///×óÒÆ
