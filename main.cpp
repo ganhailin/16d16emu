@@ -39,7 +39,7 @@ void * pth1(void* args)///---------------------------¥ÀƒÀÀ¢∆¡œﬂ≥Ã
         //sprintf(sharebuff,"Number of Finger(s):%d",getfingernum());
         //drawstring(0,0,(unsigned char*)str,0xffffff);
         //drawstring(0,10,(unsigned char*)str2,0xffffff);
-        drawstring(0,20,(unsigned char*)sharebuff,0xffffff);
+     //   drawstring(0,20,(unsigned char*)sharebuff,0xffffff);
         // drawstring(0,30,(unsigned char*)tet.getmsg(),0xffffff);
         /* for(int i=0;i<4;i++)
          {

@@ -340,7 +340,8 @@ void SDLloop(bool * drawdone,bool * done)
                     *done = true;
                     break;
                 case SDLK_F10:
-                    setfullscreen();
+                    //setfullscreen();
+                    SetLayeredWindowAttributes(hwnd,0,0,1);
                     break;
 
                 default:

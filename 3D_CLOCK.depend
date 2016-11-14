@@ -605,7 +605,7 @@
 
 1414160836 c:\users\gan\github\16d16emu\asicc.h
 
-1478525288 source:c:\users\gan\github\16d16emu\draw.cpp
+1478526238 source:c:\users\gan\github\16d16emu\draw.cpp
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	<SDL2/SDL_syswm.h>
@@ -649,7 +649,7 @@
 	<time.h>
 	<math.h>
 
-1478525172 source:c:\users\gan\github\16d16emu\main.cpp
+1478526180 source:c:\users\gan\github\16d16emu\main.cpp
 	<time.h>
 	<math.h>
 	"SDL2/SDL.h"
