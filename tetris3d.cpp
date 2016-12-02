@@ -86,6 +86,13 @@ int tetris3d::cleanlay(int x)
             }
     }
     scores+=100;
+    if(scores<4000)
+        if(!scores%1000)
+            hard++;
+    else
+        if(timer>5)
+            if(!scores%1000)
+                timer--;
     return 0;
 }
 
@@ -359,7 +366,7 @@ int block::bknew()
 {
     int error=0;
     srand(clock());
-    this->type=rand()%4;
+    this->type=rand()%this->parent->hard;
     ///For test this->type=6;
 
     this->posx=0;               ///####

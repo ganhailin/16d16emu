@@ -13,7 +13,7 @@
 				<Option compiler="gcc" />
 				<Option use_console_runner="0" />
 				<Compiler>
-					<Add option="-O1" />
+					<Add option="-march=corei7-avx" />
 					<Add option="-std=c++11" />
 					<Add option="-g" />
 				</Compiler>
@@ -80,7 +80,6 @@
 					<Add option="-std=c++11" />
 				</Compiler>
 				<Linker>
-					<Add option="-s" />
 					<Add option="-lmingw32 -lSDL2 -lSDL2main -lSDL2.dll -luser32 -lgdi32 -lwinmm -ldxguid -mwindows" />
 				</Linker>
 			</Target>

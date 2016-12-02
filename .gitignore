@@ -1,0 +1,4 @@
+*.layout
+obj/Debug/draw.o
+*.o
+3D_CLOCK.depend

@@ -25,8 +25,8 @@ bool haspad=false;
 void * pth1(void* args)///---------------------------´ËÄËË¢ÆÁÏß³Ì
 {
     tet.init();
-    char str[30];
-    char str2[30];
+ //   char str[30];
+//    char str2[30];
     while(!done)
     {
         usleep(200);
@@ -440,7 +440,7 @@ void * pth5(void* args)
 int main(int argc, char *argv[])
 {
     pthread_t thread,thread2,thread3,thread4,thread5;
-    setdisplay(480,720);
+    setdisplay(1366,768);
     initSDL();
     for (int i = 0; i < SDL_NumJoysticks(); ++i)
         if (SDL_IsGameController(i))
@@ -455,7 +455,7 @@ int main(int argc, char *argv[])
         }
 
     setcam(setpoint(0,200,-200,0),setpointR(D2R(45),0,0));
-    seteye(setpoint(0,0,-800,0));
+    seteye(setpoint(0,0,-1000,0));
     pthread_create(&thread,NULL,pth1,NULL);
     pthread_create(&thread2,NULL,pth2,NULL);
     pthread_create(&thread3,NULL,pth3,NULL);

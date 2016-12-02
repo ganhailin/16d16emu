@@ -172,15 +172,20 @@ public:
     {
         if(timerup)
             time++;
-        if(time%10==0)
+        if(time==timer)
+        {
             if(timerup)
                 gameloop();
+            time=0;
+        }
     }
     float getangle()///return the look from head clock angle
     {
         return led.getangle();
     }
     int status=-1;
+    int hard=4;
+    uint32_t timer=10;
 private:
     uint32_t time=0;
     int timerup=0;
