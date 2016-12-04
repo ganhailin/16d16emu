@@ -197,12 +197,12 @@ void * pth3(void* args)///-----------------------------------ÕâÊÇÄ£Äâ°´¼üÉ¨ÃèÖÐ¶
             if(B_A_old)
                 tet.gameloop();
         B_A_old=B_A;
-        B_B=SDL_GameControllerGetButton(controller,SDL_CONTROLLER_BUTTON_B);
+       /* B_B=SDL_GameControllerGetButton(controller,SDL_CONTROLLER_BUTTON_B);
         if(!B_B)
             if(B_B_old)
                 done=1;
         B_B_old=B_B;
-
+*/
 
 
         /********************************************//**

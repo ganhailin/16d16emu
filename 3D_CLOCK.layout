@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
-	<ActiveTarget name="Release" />
-	<File name="ledblock.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<ActiveTarget name="Release i7" />
+	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4262" topLine="94" />
+			<Cursor1 position="6685" topLine="494" />
 		</Cursor>
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="touch.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="596" topLine="0" />
+			<Cursor1 position="84" topLine="69" />
 		</Cursor>
 	</File>
 	<File name="touch.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -22,40 +22,40 @@
 			<Cursor1 position="535" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="3D.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="339" topLine="57" />
+		</Cursor>
+	</File>
 	<File name="icon.rc" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="24" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="tetris3d.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="248" topLine="8" />
-		</Cursor>
-	</File>
 	<File name="tetris3d.cpp" open="1" top="0" tabpos="9" split="1" active="1" splitpos="216" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2212" topLine="89" />
-			<Cursor2 position="2149" topLine="45" />
-		</Cursor>
-	</File>
-	<File name="touch.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="84" topLine="69" />
+			<Cursor1 position="2330" topLine="87" />
+			<Cursor2 position="3077" topLine="528" />
 		</Cursor>
 	</File>
 	<File name="draw.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="9811" topLine="333" />
+			<Cursor1 position="7856" topLine="287" />
 		</Cursor>
 	</File>
-	<File name="3D.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="557" zoom_1="1" zoom_2="1">
+	<File name="ledblock.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="4262" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="3D.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="3D.cpp" open="1" top="1" tabpos="6" split="0" active="1" splitpos="557" zoom_1="1" zoom_2="1">
 		<Cursor>
-			<Cursor1 position="339" topLine="33" />
+			<Cursor1 position="32577" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="tetris3d.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="199" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

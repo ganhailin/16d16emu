@@ -87,8 +87,10 @@ int tetris3d::cleanlay(int x)
     }
     scores+=100;
     if(scores<4000)
-        if(!scores%1000)
+       {
+           if(!(scores%1000))
             hard++;
+       }
     else
         if(timer>5)
             if(!scores%1000)

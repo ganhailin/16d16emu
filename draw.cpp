@@ -54,7 +54,7 @@ int setfullscreen(void)
     else
     {
         candraw=false;
-        SDL_SetWindowFullscreen(window,SDL_WINDOW_FULLSCREEN_DESKTOP);
+        SDL_SetWindowFullscreen(window,SDL_WINDOW_FULLSCREEN);
         screen = SDL_GetWindowSurface( window );
         SDL_GetWindowSize(window,&xrad,&yrad);
         candraw=true;
@@ -148,10 +148,10 @@ void initSDL(void)
     t = GetWindowLong(hwnd, GWL_STYLE);
     // t &= ~(WS_MAXIMIZE|WS_VSCROLL|WS_DLGFRAME|WS_SYSMENU|WS_SIZEBOX);
     //SetWindowLong(hwnd, GWL_STYLE, WS_POPUP|WS_VISIBLE|WS_BORDER|WS_DLGFRAME);
-   // SetLayeredWindowAttributes(hwnd,0,0,1);
-    sprintf(sharebuff,"%x",t);
+    //SetLayeredWindowAttributes(hwnd,0,0,1);
+    sprintf(sharebuff,"%lx",t);
     //SDL_WarpMouseInWindow(window,xrad/2,yrad/2);
-    //setfullscreen();
+    setfullscreen();
     SDL_SetSurfaceBlendMode(screen,SDL_BLENDMODE_BLEND);
     Gan_touch_init(window);
     atexit(exitSDL);
@@ -170,19 +170,28 @@ void updatescreen(void )
 {
 
     SDL_Color color= {210,105,30,250};
-    SDL_Color color2= {0,0,0,250};
+//    SDL_Color color2= {0,0,0,250};
     SDL_Surface *text_surface;
-    SDL_Rect rect= {10,130,470,250};
+    SDL_Rect *rect=(SDL_Rect *)malloc(sizeof(SDL_Rect));
+    rect->x=10;
+    rect->y=130;
+    rect->w=470;
+    rect->h=250;
+
     if(tet.status==2)
     {
-        if(!(text_surface=TTF_RenderText_Blended_Wrapped(displayfont,"Game Over",color,400)))
+        if(!(text_surface=TTF_RenderText_Blended(displayfont,"Game Over",color)))
         {
             //handle error here, perhaps print TTF_GetError at least
         }
         else
         {
-            rect= {100,130,470,250};
-            SDL_BlitSurface(text_surface,0,screen,&rect);
+            rect->x=400;
+            rect->y=230;
+            rect->w=470;
+            rect->h=250;
+
+            SDL_BlitSurface(text_surface,0,screen,rect);
             //perhaps we can reuse it, but I assume not for simplicity.
             SDL_FreeSurface(text_surface);
         }
@@ -196,8 +205,13 @@ void updatescreen(void )
         }
         else
         {
-            rect= {10,130,470,250};
-            SDL_BlitSurface(text_surface,0,screen,&rect);
+            rect->x=450;
+            rect->y=130;
+            rect->w=470;
+            rect->h=250;
+
+//            rect= {(Uint16)450,(Uint16)130,(Uint16)470,(Uint16)250};
+            SDL_BlitSurface(text_surface,0,screen,rect);
             //perhaps we can reuse it, but I assume not for simplicity.
             SDL_FreeSurface(text_surface);
         }
@@ -210,8 +224,13 @@ void updatescreen(void )
         }
         else
         {
-            rect= {0,0,470,250};
-            SDL_BlitSurface(text_surface,0,screen,&rect);
+            rect->x=0;
+            rect->y=0;
+            rect->w=470;
+            rect->h=250;
+
+//            rect= {0,0,(Uint16)470,(Uint16)250};
+            SDL_BlitSurface(text_surface,0,screen,rect);
             //perhaps we can reuse it, but I assume not for simplicity.
             SDL_FreeSurface(text_surface);
         }
@@ -223,8 +242,13 @@ void updatescreen(void )
     }
     else
     {
-        rect= {10,590,470,250};
-        SDL_BlitSurface(text_surface,0,screen,&rect);
+        rect->x=10;
+        rect->y=700;
+        rect->w=470;
+        rect->h=250;
+
+//        rect= {(Uint16)10,(Uint16)700,(Uint16)470,(Uint16)250};
+        SDL_BlitSurface(text_surface,0,screen,rect);
         //perhaps we can reuse it, but I assume not for simplicity.
         SDL_FreeSurface(text_surface);
     }
@@ -235,14 +259,19 @@ void updatescreen(void )
     }
     else
     {
-        rect= {270,590,470,250};
-        SDL_BlitSurface(text_surface,0,screen,&rect);
+        rect->x=1150;
+        rect->y=700;
+        rect->w=470;
+        rect->h=250;
+
+//        rect= {(Uint16)1150,(Uint16)700,(Uint16)470,(Uint16)250};
+        SDL_BlitSurface(text_surface,0,screen,rect);
         //perhaps we can reuse it, but I assume not for simplicity.
         SDL_FreeSurface(text_surface);
     }
 
     SDL_UpdateWindowSurface( window );
-
+    free(rect);
 }
 
 
@@ -340,8 +369,8 @@ void SDLloop(bool * drawdone,bool * done)
                     *done = true;
                     break;
                 case SDLK_F10:
-                    //setfullscreen();
-                    SetLayeredWindowAttributes(hwnd,0,0,1);
+                    setfullscreen();
+                   // SetLayeredWindowAttributes(hwnd,0,0,1);
                     break;
 
                 default:
